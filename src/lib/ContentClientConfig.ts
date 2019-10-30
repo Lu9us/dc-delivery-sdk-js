@@ -45,4 +45,14 @@ export interface ContentClientConfig {
    * update the baseUrl to load content from the virtual staging environment.
    */
   baseUrl?: string;
+
+  /**
+   * Like the exiting base URL but for overriding the CDv2 variant
+   */
+  cdv2BaseUrl?: string;
+
+  /**
+   * Which hub are you targeting, needed for completing the CDv2 URL structure
+   */
+  cdv2HubName?: string;
 }

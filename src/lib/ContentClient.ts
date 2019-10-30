@@ -5,6 +5,8 @@ import { RenderContentItem } from './rendering/coordinators/RenderContentItem';
 import { ContentItem } from './content/model/ContentItem';
 import { ContentBody, DefaultContentBody } from './content/model/ContentBody';
 import { GetContentItem } from './content/coordinators/GetContentItem';
+import { GetCdv2ByContentId } from './content/coordinators/GetCdv2ByContentId';
+import { GetCdv2ByDeliveryKey } from './content/coordinators/GetCdv2ByDeliveryKey';
 import { ContentMapper } from './content/mapper/ContentMapper';
 
 /**
@@ -81,6 +83,26 @@ export class ContentClient {
       this.contentClient,
       this.contentMapper
     ).getContentItem(contentItemId);
+  }
+
+  getCdv2ByContentId<T extends ContentBody = DefaultContentBody>(
+    contentItemId: string
+  ): Promise<ContentItem<T>> {
+    return new GetCdv2ByContentId(
+      this.config,
+      this.contentClient,
+      this.contentMapper
+    ).getCdv2ByContentId(contentItemId);
+  }
+
+  getCdv2ByDeliveryKey<T extends ContentBody = DefaultContentBody>(
+    contentItemId: string
+  ): Promise<ContentItem<T>> {
+    return new GetCdv2ByDeliveryKey(
+      this.config,
+      this.contentClient,
+      this.contentMapper
+    ).getCdv2ByDeliveryKey(contentItemId);
   }
 
   /**
